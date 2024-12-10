@@ -57,7 +57,8 @@ const TextEditor = () => {
   // initialize socket
   useEffect(() => {
     // if (!quill) return () => {};
-    const socketInstance = io("http://localhost:3000", { query: { doc_id } });
+    // const socketInstance = io("http://localhost:3000", { query: { doc_id } }); // Local connection url 
+    const socketInstance = io("docwithaccesscodeback-production.up.railway.app", { query: { doc_id } }); // Public connection url 
     socketInstance.on("connect", () => {
       console.log("Connected to server");
     });
