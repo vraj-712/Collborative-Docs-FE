@@ -5,6 +5,7 @@ import './App.css'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import Home from './Page/Home'
 import TextEditor from './Page/TextEditor'
+import Documents from './Page/Documents'
 
 function App() {
 
@@ -14,7 +15,7 @@ function App() {
         <Routes>
           <Route path="/" index element={<Home /> } />
           <Route path="/document/:id"  element={<TextEditor /> } />
-
+          <Route path="/documents"  element={<Documents /> } />
         </Routes>
       </Router>
     </>
