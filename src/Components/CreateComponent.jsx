@@ -8,7 +8,7 @@ const CreateComponent = ({setIsOpenCreateRoom}) => {
     const [access_text, setAccessText] = useState("")
     const [createBtnIsDisable, setCreateBtnIsDisable] = useState(true)
     const handleCreate = () => {
-        axiosInstance.post('/document/create-doc', data, {withCredentials: true})
+        axiosInstance.post('/document/create-doc', data)
         .then((res) => {
             setCreateBtnIsDisable(false)
             toast.success(res.message)
