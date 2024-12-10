@@ -133,7 +133,7 @@ const Documents = () => {
             </div>
             <div className='w-full h-1/4 font-bold rounded-t-xl flex flex-row justify-between items-center px-3'>
               <div ><span className='text-red-500 text-lg'>Created By</span>&nbsp;: &nbsp; {doc.createdBy}</div>
-              <div><span className='text-red-500 text-lg animate-pulse text-2xl'>0</span>&nbsp;&nbsp;</div>
+              <div><span className='text-red-500 text-lg animate-pulse text-2xl'>{doc.total_users}</span>&nbsp;&nbsp;</div>
             </div>
           </div>
             )
