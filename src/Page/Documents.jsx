@@ -69,8 +69,8 @@ const Documents = () => {
     }
   return (
     <>
-      <div className='w-screen min-h-screen bg-black box-border p-5 relative z-0'>
-        <div className="text-white w-full h-[250px] backdrop-blur-sm bg-white/10 border-2 border-white shadow-custom-light mb-3 rounded-xl flex flex-row items-center">
+      <div className='w-screen min-h-screen bg-black box-border p-5 relative'>
+        <div className="text-white w-full h-[250px] backdrop-blur-sm bg-white/10 border-2 border-white shadow-custom-light mb-3 rounded-xl flex flex-row items-center relative z-20">
         <div className='w-full h-full p-3'>
           <div className='w-full h-full gap-2 rounded-xl flex flex-col'>
               <div className='w-full h-full flex flex-row jsutify-center items-center'>
@@ -118,15 +118,15 @@ const Documents = () => {
         {
           data && data.map((doc) => {
             return (
-              <div className="w-full h-40 bg-white relative rounded-b-xl rounded-t-xl -z-10" key={doc._id}>
+              <div className="w-full h-40 bg-white relative rounded-b-xl rounded-t-xl" key={doc._id}>
             <div className='w-full h-1/4 font-bold text-lg rounded-t-xl flex justify-center items-center bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-500 hover:from-blue-600 hover:via-indigo-600 hover:to-purple-600 text-white'>
               {doc?.doc_name?.length > 27 ? doc.doc_name.slice(0, 27) + "..." : doc.doc_name.slice(0, 27)}
             </div>
-            <div className='w-full h-1/4 font-bold flex items-center px-3 hover:cursor-pointer hover:text-green-500 duration-300' onClick={() => {
+            <div className='w-full h-1/4 font-bold flex items-center px-3' onClick={() => {
               navigator.clipboard.writeText(doc.doc_id)
               toast.success("Copied to clipboard")
             }}>
-              <span className='font-bold text-red-500 text-lg'>Doc Id &nbsp;: &nbsp;</span> {doc.doc_id}
+              <span className='font-bold text-lg text-red-500'>Doc Id &nbsp;: &nbsp;</span><span className='hover:cursor-pointer hover:text-green-500 duration-300'>{doc.doc_id}</span> 
             </div>
             <div className='w-full h-1/4 font-bold flex items-center px-3'>
             <div ><span className='text-red-500 text-lg'>Created At</span>&nbsp;: &nbsp; {new Date(doc.createdAt).toLocaleString()}</div>
