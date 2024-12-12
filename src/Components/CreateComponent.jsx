@@ -4,10 +4,15 @@ import { axiosInstance } from '../utils/axios'
 import { ToastContainer, toast } from 'react-toastify';
 
 const CreateComponent = ({setIsOpenCreateRoom}) => {
-    const [data, setData] = useState({})
+    const [data, setData] = useState({
+        doc_name: "",
+        access_code: "",
+        createdBy: ""
+    })
     const [access_text, setAccessText] = useState("")
-    const [createBtnIsDisable, setCreateBtnIsDisable] = useState(true)
+    const [createBtnIsDisable, setCreateBtnIsDisable] = useState(false)
     const handleCreate = () => {
+        setCreateBtnIsDisable(true)
         axiosInstance.post('/document/create-doc', data)
         .then((res) => {
             setCreateBtnIsDisable(false)
@@ -16,9 +21,11 @@ const CreateComponent = ({setIsOpenCreateRoom}) => {
             for(let msg of res.data.message) {
                 toast.success(msg)
             }
-        setData({})
+            setCreateBtnIsDisable(false)
+            setData({})
         })
         .catch((err) => {
+            setCreateBtnIsDisable(false)
             toast.error(err.message)
         })
     }
@@ -28,13 +35,6 @@ const CreateComponent = ({setIsOpenCreateRoom}) => {
             setAccessText("*".repeat(len))
         }
         setData(prev => { return {...prev, [e.target.name]:e.target.value}})
-
-        if (data?.doc_name && data?.access_code && data?.createdBy) {
-            console.log(data?.doc_name && data?.access_code && data?.createdBy);
-            setCreateBtnIsDisable(false)
-        } else {
-            setCreateBtnIsDisable(true)
-        }
     }
 
   return (

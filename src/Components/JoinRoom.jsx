@@ -5,23 +5,21 @@ import { useNavigate } from 'react-router-dom'
 
 const JoinRoom = ({setIsOpenJoinRoom}) => {
     const navigate = useNavigate()
-    const [data, setData] = useState({})
+    const [data, setData] = useState({
+        doc_id: "",
+        access_code: ""
+    })
     const [access_text, setAccessText] = useState("")
-    const [joinIsDisable, setJoinIsDisable] = useState(true)
+    const [joinIsDisable, setJoinIsDisable] = useState(false)
 const handleChange = (e) => {
     if (e.target.name === "access_code") {
         const len = e.target.value.length
         setAccessText("*".repeat(len))
     }
     setData(prev => { return {...prev, [e.target.name]:e.target.value}})
-
-    if (data?.doc_id && data?.access_code) {
-        setJoinIsDisable(false)
-    } else {
-        setJoinIsDisable(true)
-    }
 }
 const handleJoin = () => {
+    setJoinIsDisable(true)
     axiosInstance.post('/document/access-doc', data, {withCredentials: true})
     .then((res) => {
         toast.success(res.message)
@@ -33,9 +31,11 @@ const handleJoin = () => {
                 doc_name: res?.data?.doc_name,
             },
         })
+        setJoinIsDisable(false)
     })
     .catch((err) => {
         toast.error(err.message)
+        setJoinIsDisable(false)
     })
 }
   return (
