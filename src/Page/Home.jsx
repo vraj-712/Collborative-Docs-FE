@@ -28,7 +28,7 @@ const Home = () => {
         </div>
       {isOpenCreateRoom && <CreateComponent setIsOpenCreateRoom={setIsOpenCreateRoom} />}
       {isOpenJoimRoom && <JoinRoom setIsOpenJoinRoom={setIsOpenJoinRoom} />}
-      <div onClick={() => navigate('/documents', {replace: true})} className="hover:bg-gradient-to-t hover:from-red-700 hover:via-orange-600 hover:to-yellow-500 bg-gradient-to-t from-red-600 via-orange-500 to-yellow-400 font-bold  absolute bottom-0 right-0 transform -translate-x-1/2 -translate-y-1/2 text-center px-5 py-2 text-white font-bold text-xl rounded-xl shadow-lg shadow-orange-500 hover:cursor-pointer">
+      <div onClick={() => navigate('/documents')} className="hover:bg-gradient-to-t hover:from-red-700 hover:via-orange-600 hover:to-yellow-500 bg-gradient-to-t from-red-600 via-orange-500 to-yellow-400 font-bold  absolute bottom-0 right-0 transform -translate-x-1/2 -translate-y-1/2 text-center px-5 py-2 text-white font-bold text-xl rounded-xl shadow-lg shadow-orange-500 hover:cursor-pointer">
         All Docs
       </div>
       </div>

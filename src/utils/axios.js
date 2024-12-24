@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const axiosInstance = axios.create({
-    // baseURL: "http://localhost:3000/api/v1", // localhost
+    // baseURL: "http://localhost:3000/api/v1", // lo/calhost
     baseURL: "https://docwithaccesscodeback-production.up.railway.app/api/v1",
 
 });
