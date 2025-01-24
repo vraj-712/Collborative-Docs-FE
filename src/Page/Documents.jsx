@@ -76,11 +76,17 @@ const Documents = () => {
         params: { ...query, ...value },
       })
       .then((res) => {
-        toast.success(res.message);
-        setData(res.data);
-        navigate(newUrl, {
-          replace: true,
-        });
+        if(res.statusCode === 404) {
+          toast.error(res.message);
+          setData([]);
+        }
+        if(res.statusCode === 200) {
+          toast.success(res.message);
+          setData(res.data);
+          navigate(newUrl, {
+            replace: true,
+          });
+        }
       });
   }, []);
 
@@ -210,12 +216,17 @@ const Documents = () => {
           </div>
         </div>
         <div className="w-full h-full grid 2xl:grid-cols-3 xl:grid-cols-3 lg:grid-cols-2 md:grid-cols-1 sm:grid-cols-1 grid-cols-1 gap-10 p-2"> {/*grid lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-2 grid-cols-1 gap-5 */}
-          {data.map((item, index) => (
+          {data?.length > 0 && data.map((item, index) => (
             <div className="hover:cursor-pointer hover:scale-105 duration-300">
             <DocumentCard key={index} item={item} />
             </div>
-          ))}
+          )) }
         </div>
+        {data?.length === 0 && <div className="h-full w-full">
+          <p className="text-center text-white font-bold text-4xl">
+            No Data Found !!
+          </p>
+        </div>}
         <ToastContainer />
       </div>
     </>
