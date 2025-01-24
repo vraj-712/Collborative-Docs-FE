@@ -227,6 +227,11 @@ const Documents = () => {
             No Data Found !!
           </p>
         </div>}
+        <div className="fixed bottom-2 -right-7 transform -translate-x-1/2 -translate-y-1/2" onClick={() => navigate('/', { replace: true })}>
+            <p className="text-center text-white font-bold text-lg hover:bg-gradient-to-t hover:from-red-700 hover:via-orange-600 hover:to-yellow-500 bg-gradient-to-t from-red-600 via-orange-500 to-yellow-400 font-bold  text-center px-5 py-2 text-white font-bold text-xl rounded-xl shadow-lg shadow-orange-500 hover:cursor-pointer">
+              Back To Home
+            </p>
+        </div>
         <ToastContainer />
       </div>
     </>
