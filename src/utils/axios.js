@@ -1,8 +1,9 @@
 import axios from "axios";
 
 const axiosInstance = axios.create({
-    // baseURL: "http://localhost:3000/api/v1", // lo/calhost
-    baseURL: "https://docwithaccesscodeback-production.up.railway.app/api/v1",
+    // baseURL: "http://localhost:3000/api/v1", // localhost
+    // baseURL: "https://docwithaccesscodeback-production.up.railway.app/api/v1", // Railway Deployment  
+    baseURL: "https://collborative-docs-be.onrender.com", // Render Deployment
 
 });
 
