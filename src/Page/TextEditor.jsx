@@ -58,7 +58,8 @@ const TextEditor = () => {
   useEffect(() => {
     // if (!quill) return () => {};
     // const socketInstance = io("http://localhost:3000", { query: { doc_id } }); // Local connection url 
-    const socketInstance = io("https://docwithaccesscodeback-production.up.railway.app", { query: { doc_id } }); // Public connection url 
+    // const socketInstance = io("https://docwithaccesscodeback-production.up.railway.app", { query: { doc_id } }); // Public connection url
+    const socketInstance = io("https://collborative-docs-be.onrender.com", { query: { doc_id } });
     socketInstance.on("connect", () => {
       console.log("Connected to server");
     });
